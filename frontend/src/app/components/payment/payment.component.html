@@ -1,0 +1,34 @@
+<body>
+    <div class="wrapper">
+        <h2>Payment Form</h2>
+        <form action method="post" #uploadForm="ngForm">
+            <label>Card Number </label>
+            <div class="input-group">
+                <div class="input-box">
+                    <input type="text" placeholder="Card Number" #fname="ngModel"  class="name" name='card' [(ngModel)]="creditCard.number" required>
+                    <i class="fa fa-credit-card icon"></i>
+                </div>
+            </div>
+            <div class="input-group">
+                 
+                <div class="input-box">
+                    <input type="text" placeholder="Card CVV" class="name" name='cvv' [(ngModel)]="creditCard.cvv" required >
+                    <i class="fa fa-user icon"></i>
+                </div>
+                <div class="input-box">
+                    <input type="text" placeholder="expiry month"  class="name" name='expMonth' [(ngModel)]="creditCard.expMonth" required>
+                    <i class ="fa fa-calendar icon"></i>                    
+                </div>
+                <div class="input-box">
+                    <input type="text" placeholder="expiry year"  class="name" name='expMonth' [(ngModel)]="creditCard.expYear" required>
+                    <i class ="fa fa-calendar icon"></i>                    
+                </div>
+            </div>
+            <div class="input-group">
+                <div class="input-box">
+                    <button type="submit" (click)="submit()">PAY NOW</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</body>

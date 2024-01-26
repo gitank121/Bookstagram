@@ -1,0 +1,71 @@
+<html>
+<head>
+    <link rel="stylesheet" href="cart.component.css" type="text/css" />
+</head>
+
+<body>
+    <div class="checkout">
+        <div class="cartTotal">Cart Totals</div>
+        <p class="seprator2">_______________________________________________________________________</p>
+        <div class="cartsubtotal">Subtotal&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{subtotal}} LE</div>
+        
+        <p class="seprator2">_______________________________________________________________________</p>
+        <div class="cartsubtotal">Shipping&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;20.0 LE</div>
+            <p class="seprator2">_______________________________________________________________________</p>
+            <div class="cartsubtotal">Total&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{Total}} LE</div>
+                <p class="seprator2">_______________________________________________________________________</p>
+               
+               
+                    <div *ngIf="EmptyCart !=0"> 
+    <button class="proceed"  (click)="yes()">Proceed To Checkout</button>
+                    </div>
+
+<div  class="checker">
+    <div *ngIf="EmptyCart==0">
+    <button class="proceed" disabled="true">Proceed To Checkout</button>
+    <span id="Emptycart"  class="tooltiptext">Your Cart Is Empty</span>
+</div>
+
+
+    
+</div>
+    <div class="vl"></div>
+    
+   
+    </div>
+    <table class="table" >
+        <tr>
+            <td >
+                <p class="header">Product&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    Price&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Quantity&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SubTotal</p>
+                <p class="line">__________________________________________</p>
+            </td>
+        </tr>
+        <div *ngFor="let product of bestsellerproducts">
+        <tr class="table">
+            <td  class="table">
+    
+                <button class="removeitem" (click)="removeItemFromCart(product.isbn)">x</button>
+                <img class="productimg" width="80" height="70" src="/../assets/images/{{product.image}}">
+                <p class="productname">{{product.title}}</p>
+                <p class="productprice">{{product.price}}&nbsp;LE</p>
+                <input class="input"   id={{product.isbn}} value="{{product.copies}}" readonly />
+                <div  class="Decrease-button" id="decrease" (click)="decreaseValue(product.isbn)" value="Decrease Value">-</div>
+                <div  class="Increase-button" id="increase" (click)="increaseValue(product.isbn)" value="Increase Value">+</div>
+                <div id="sub{{product.isbn}}" class="subtotal"  >{{product.price*product.copies}}</div>
+                <p class="seprator">______________________________________________________________________________</p>
+            </td>
+        </tr>
+    </div>   
+    </table>
+ 
+   
+</body>
+
+</html>
